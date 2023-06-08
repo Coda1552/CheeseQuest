@@ -7,9 +7,7 @@ import codyy.cheesequest.common.blocks.entities.QuestLionBlockEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.Model;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -36,8 +34,9 @@ public class QuestLionBlockEntityRenderer implements BlockEntityRenderer<QuestLi
 
         pPoseStack.pushPose();
 
-        pPoseStack.scale(0.5F, 0.5F, 0.5F);
-        pPoseStack.translate(1.0D, (Mth.sin(f * 0.1F) * 0.1F) - 0.15F, 1.0D);
+        pPoseStack.scale(0.75F, 0.75F, 0.75F);
+
+        pPoseStack.translate(0.65D, (Mth.sin(f * 0.1F) * 0.05F) - 0.45F, 0.65D);
 
         float f1;
         for (f1 = pBlockEntity.rot - pBlockEntity.oRot; f1 >= (float)Math.PI; f1 -= ((float)Math.PI * 2F)) {
