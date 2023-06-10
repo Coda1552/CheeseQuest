@@ -47,14 +47,11 @@ public class QuestLionBlock extends BaseEntityBlock {
 
     @Override
     public VoxelShape getShape(BlockState p_60555_, BlockGetter p_60556_, BlockPos p_60557_, CollisionContext p_60558_) {
-        return makeShape();
-    }
-
-    public VoxelShape makeShape() {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.join(shape, Shapes.box(0.125, 0.1875, 0.125, 0.875, 0.9375, 0.875), BooleanOp.OR);
         shape = Shapes.join(shape, Shapes.box(0.25, 0, 0.25, 0.75, 0.1875, 0.75), BooleanOp.OR);
 
         return shape;
     }
+
 }
