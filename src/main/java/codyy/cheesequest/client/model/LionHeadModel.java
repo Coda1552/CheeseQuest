@@ -1,5 +1,6 @@
 package codyy.cheesequest.client.model;
 
+import codyy.cheesequest.common.entities.QuestLionEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
@@ -9,7 +10,7 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 
-public class LionHeadModel extends EntityModel<Entity> {
+public class LionHeadModel extends EntityModel<QuestLionEntity> {
 	private final ModelPart head;
 
 	public LionHeadModel(ModelPart root) {
@@ -41,14 +42,8 @@ public class LionHeadModel extends EntityModel<Entity> {
 		this.head.render(pPoseStack, pBuffer, pPackedLight, pPackedOverlay, pRed, pGreen, pBlue, pAlpha);
 	}
 
-	public void doAnim(float pTime) {
-		float f = (Mth.sin(pTime * 0.02F) * 0.1F + 1.25F);
-		this.head.yRot = -f;
-		this.head.x = Mth.sin(f);
-	}
-
 	@Override
-	public void setupAnim(Entity pEntity, float pLimbSwing, float pLimbSwingAmount, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
+	public void setupAnim(QuestLionEntity pEntity, float pLimbSwing, float pLimbSwingAmount, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
 
 	}
 }

@@ -6,8 +6,10 @@ import codyy.cheesequest.registry.ModEntities;
 import codyy.cheesequest.registry.ModItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -25,6 +27,7 @@ public class CheeseQuest {
         ModEntities.ENTITY_TYPES.register(bus);
 
         bus.addListener(this::createTab);
+        bus.addListener(this::createAttributes);
     }
 
     private void createTab(CreativeModeTabEvent.Register e) {
@@ -36,5 +39,9 @@ public class CheeseQuest {
                     }
                 })
         );
+    }
+
+    private void createAttributes(EntityAttributeCreationEvent e) {
+        e.put(ModEntities.QUEST_LION.get(), LivingEntity.createLivingAttributes().build());
     }
 }
