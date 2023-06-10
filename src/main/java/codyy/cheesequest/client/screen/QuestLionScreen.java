@@ -33,11 +33,25 @@ public class QuestLionScreen extends Screen {
         int i = this.leftPos;
         int j = this.topPos;
 
+        renderDarkBg(pPoseStack);
+
         QuestLionEntity lion = ModEntities.QUEST_LION.get().create(minecraft.player.level);
 
         renderEntityInInventoryFollowsCursor(pPoseStack, i - 200, j + 120, 100, (float)(i - 200) - this.xMouse, (float)j - this.yMouse, lion);
+
         this.xMouse = (float)pMouseX;
         this.yMouse = (float)pMouseY;
+
+
+    }
+
+    private void renderDarkBg(PoseStack stack) {
+        if (this.minecraft.level != null) {
+            fillGradient(stack, 0, 0, this.width, this.height, -1072689136, -804253680);
+            net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new net.minecraftforge.client.event.ScreenEvent.BackgroundRendered(this, stack));
+        } else {
+            RenderSystem.setShaderColor(0.25F, 0.25F, 0.25F, 1.0F);
+        }
     }
 
     public static void renderEntityInInventoryFollowsCursor(PoseStack p_275396_, int p_275688_, int p_275245_, int p_275535_, float p_275604_, float p_275546_, LivingEntity p_275689_) {

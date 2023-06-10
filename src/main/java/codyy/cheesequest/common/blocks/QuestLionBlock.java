@@ -7,6 +7,8 @@ import codyy.cheesequest.registry.ModBlockEntities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -31,6 +33,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
+import oshi.hardware.SoundCard;
 
 public class QuestLionBlock extends BaseEntityBlock {
 
@@ -55,6 +58,7 @@ public class QuestLionBlock extends BaseEntityBlock {
 
         if (stack.isEmpty() && pLevel.isClientSide) {
             Minecraft.getInstance().setScreen(new QuestLionScreen(Component.translatable("blockentity." + CheeseQuest.MOD_ID + ".quest_lion")));
+            pLevel.playSound(pPlayer, pPos, SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.BLOCKS, 1.0F, 1.0F);
             return InteractionResult.CONSUME;
         }
         else {
