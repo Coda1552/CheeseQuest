@@ -13,6 +13,8 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraftforge.client.event.ScreenEvent;
+import net.minecraftforge.common.MinecraftForge;
 import org.joml.Matrix4f;
 import org.joml.Quaternionf;
 
@@ -48,7 +50,7 @@ public class QuestLionScreen extends Screen {
     private void renderDarkBg(PoseStack stack) {
         if (this.minecraft.level != null) {
             fillGradient(stack, 0, 0, this.width, this.height, -1072689136, -804253680);
-            net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new net.minecraftforge.client.event.ScreenEvent.BackgroundRendered(this, stack));
+            MinecraftForge.EVENT_BUS.post(new ScreenEvent.BackgroundRendered(this, stack));
         } else {
             RenderSystem.setShaderColor(0.25F, 0.25F, 0.25F, 1.0F);
         }
