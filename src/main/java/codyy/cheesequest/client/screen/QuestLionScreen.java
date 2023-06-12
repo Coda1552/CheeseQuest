@@ -104,9 +104,7 @@ public class QuestLionScreen extends Screen {
 
         entityrenderdispatcher.setRenderShadow(false);
         MultiBufferSource.BufferSource multibuffersource$buffersource = Minecraft.getInstance().renderBuffers().bufferSource();
-        RenderSystem.runAsFancy(() -> {
-            entityrenderdispatcher.render(p_275237_, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, posestack, multibuffersource$buffersource, 15728880);
-        });
+        RenderSystem.runAsFancy(() -> entityrenderdispatcher.render(p_275237_, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, posestack, multibuffersource$buffersource, 15728880));
         multibuffersource$buffersource.endBatch();
         entityrenderdispatcher.setRenderShadow(true);
         posestack.popPose();
