@@ -3,7 +3,10 @@ package codyy.cheesequest.common.blocks;
 import codyy.cheesequest.CheeseQuest;
 import codyy.cheesequest.client.screen.QuestLionScreen;
 import codyy.cheesequest.common.blocks.entities.QuestLionBlockEntity;
+import codyy.cheesequest.common.entities.QuestLionEntity;
 import codyy.cheesequest.registry.ModBlockEntities;
+import codyy.cheesequest.registry.ModEntities;
+import dev.zanckor.example.client.event.StartDialog;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -35,7 +38,10 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import oshi.hardware.SoundCard;
 
+import java.io.IOException;
+
 public class QuestLionBlock extends BaseEntityBlock {
+    private final String dialogId = "cheesequest.collect_items_dialog";
 
     public QuestLionBlock(Properties builder) {
         super(builder);
@@ -57,8 +63,16 @@ public class QuestLionBlock extends BaseEntityBlock {
         ItemStack stack = pPlayer.getItemInHand(pHand);
 
         if (stack.isEmpty() && pLevel.isClientSide) {
-            Minecraft.getInstance().setScreen(new QuestLionScreen(Component.translatable("blockentity." + CheeseQuest.MOD_ID + ".quest_lion")));
+            //Minecraft.getInstance().setScreen(new QuestLionScreen(Component.translatable("blockentity." + CheeseQuest.MOD_ID + ".quest_lion")));
             pLevel.playSound(pPlayer, pPos, SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.BLOCKS, 1.0F, 1.0F);
+
+            QuestLionEntity lion = ModEntities.QUEST_LION.get().create(pPlayer.level());
+
+            try {
+                StartDialog.loadDialog(pPlayer, dialogId, lion);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             return InteractionResult.CONSUME;
         }
         else {
