@@ -18,7 +18,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import java.io.IOException;
 
 @Mod(CheeseQuest.MOD_ID)
-@Mod.EventBusSubscriber(modid = QuestApiMain.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@Mod.EventBusSubscriber(modid = CheeseQuest.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CheeseQuest {
     public static final String MOD_ID = "cheesequest";
 
