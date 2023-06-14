@@ -5,7 +5,7 @@
       "dialogText": "dialog_text.questapi.collect_items_dialog.salute",
       "requirements": {
         "type": "QUEST",
-        "quest_id": "cheesequest.collect_items",
+        "quest_id": "cheesequest.kill_entities",
         "requirement_status": "NOT_OBTAINED"
       },
       "options": [
@@ -32,7 +32,7 @@
         {
           "text": "dialog_text.questapi.collect_items_dialog.quest_accepted.add_quest",
           "type": "ADD_QUEST",
-          "quest_id": "cheesequest.collect_items"
+          "quest_id": "cheesequest.kill_entities"
         }
       ]
     },
@@ -76,7 +76,7 @@
       "dialogText": "dialog_text.questapi.collect_items_dialog.work_in_progress",
       "requirements": {
         "type": "QUEST",
-        "quest_id": "cheesequest.collect_items",
+        "quest_id": "cheesequest.kill_entities",
         "requirement_status": "IN_PROGRESS"
       },
       "options": [
@@ -91,7 +91,7 @@
       "dialogText": "dialog_text.questapi.collect_items_dialog.greetings",
       "requirements": {
         "type": "QUEST",
-        "quest_id": "cheesequest.collect_items",
+        "quest_id": "cheesequest.kill_entities",
         "requirement_status": "COMPLETED"
       },
       "options": [

@@ -27,9 +27,9 @@
   ],
   "rewards": [
     {
-      "type": "XP",
-      "tag": "LEVEL",
-      "amount": 10
+      "type": "LOOT_TABLE",
+      "tag": "minecraft:chests/bastion_treasure",
+      "amount": 1
     }
   ],
   "requirements": [

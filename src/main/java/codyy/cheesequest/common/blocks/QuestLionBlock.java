@@ -62,18 +62,17 @@ public class QuestLionBlock extends BaseEntityBlock {
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         ItemStack stack = pPlayer.getItemInHand(pHand);
 
-        if (stack.isEmpty()) {
+        if (stack.isEmpty() && !pLevel.isClientSide) {
             //Minecraft.getInstance().setScreen(new QuestLionScreen(Component.translatable("blockentity." + CheeseQuest.MOD_ID + ".quest_lion")));
             pLevel.playSound(pPlayer, pPos, SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.BLOCKS, 1.0F, 1.0F);
 
-//            QuestLionEntity lion = ModEntities.QUEST_LION.get().create(pPlayer.level());
-//            if (lion != null) {
-                try {
-                    StartDialog.loadDialog(pPlayer, dialogId, null);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-//            }
+            QuestLionEntity lion = new QuestLionEntity(ModEntities.QUEST_LION.get(), pPlayer.level());
+
+            try {
+                StartDialog.loadDialog(pPlayer, dialogId, null);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
             return InteractionResult.CONSUME;
         }
