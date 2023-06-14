@@ -41,7 +41,7 @@ import oshi.hardware.SoundCard;
 import java.io.IOException;
 
 public class QuestLionBlock extends BaseEntityBlock {
-    private final String dialogId = "cheesequest.collect_items_dialog";
+    private final String dialogId = "questapi.collect_items_dialog";
 
     public QuestLionBlock(Properties builder) {
         super(builder);
@@ -62,17 +62,19 @@ public class QuestLionBlock extends BaseEntityBlock {
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         ItemStack stack = pPlayer.getItemInHand(pHand);
 
-        if (stack.isEmpty() && pLevel.isClientSide) {
+        if (stack.isEmpty()) {
             //Minecraft.getInstance().setScreen(new QuestLionScreen(Component.translatable("blockentity." + CheeseQuest.MOD_ID + ".quest_lion")));
             pLevel.playSound(pPlayer, pPos, SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.BLOCKS, 1.0F, 1.0F);
 
-            QuestLionEntity lion = ModEntities.QUEST_LION.get().create(pPlayer.level());
+//            QuestLionEntity lion = ModEntities.QUEST_LION.get().create(pPlayer.level());
+//            if (lion != null) {
+                try {
+                    StartDialog.loadDialog(pPlayer, dialogId, null);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+//            }
 
-            try {
-                StartDialog.loadDialog(pPlayer, dialogId, lion);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
             return InteractionResult.CONSUME;
         }
         else {
