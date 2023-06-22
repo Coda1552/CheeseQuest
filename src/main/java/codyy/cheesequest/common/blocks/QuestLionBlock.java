@@ -6,7 +6,8 @@ import codyy.cheesequest.common.blocks.entities.QuestLionBlockEntity;
 import codyy.cheesequest.common.entities.QuestLionEntity;
 import codyy.cheesequest.registry.ModBlockEntities;
 import codyy.cheesequest.registry.ModEntities;
-import dev.zanckor.example.client.event.StartDialog;
+import codyy.cheesequest.registry.ModItems;
+import dev.zanckor.mod.server.startdialog.StartDialog;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -69,7 +70,7 @@ public class QuestLionBlock extends BaseEntityBlock {
             QuestLionEntity lion = new QuestLionEntity(ModEntities.QUEST_LION.get(), pPlayer.level());
 
             try {
-                StartDialog.loadDialog(pPlayer, dialogId, null);
+                StartDialog.loadDialog(pPlayer, dialogId, lion);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

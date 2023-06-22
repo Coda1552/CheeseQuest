@@ -6,7 +6,6 @@ import dev.zanckor.api.filemanager.npc.entity_type.register.LoadDialogList;
 import dev.zanckor.api.filemanager.npc.entity_type_tag.register.LoadTagDialogList;
 import dev.zanckor.api.filemanager.quest.register.LoadQuest;
 import dev.zanckor.mod.QuestApiMain;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;

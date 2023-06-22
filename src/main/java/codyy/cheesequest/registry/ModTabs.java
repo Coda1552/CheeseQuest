@@ -17,5 +17,5 @@ public class ModTabs {
         }
     };
 
-    public static final RegistryObject<CreativeModeTab> CHEESE_QUEST_TAB = TABS.register("cheese_quest_tab", () -> new CreativeModeTab.Builder(CreativeModeTab.Row.TOP, 1).title(Component.translatable("itemGroup." + CheeseQuest.MOD_ID)).displayItems(GENERATOR).noScrollBar().build());
+    public static final RegistryObject<CreativeModeTab> CHEESE_QUEST_TAB = TABS.register("cheese_quest_tab", () -> new CreativeModeTab.Builder(CreativeModeTab.Row.TOP, 1).icon(() -> new ItemStack(ModItems.QUEST_LION.get())).title(Component.translatable("itemGroup." + CheeseQuest.MOD_ID)).displayItems(GENERATOR).noScrollBar().build());
 }
